@@ -10,4 +10,4 @@ public class WwwApplication {
 		SpringApplication.run(WwwApplication.class, args);
 	}
 
-}
+} 
