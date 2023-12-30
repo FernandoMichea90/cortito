@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import cl.cortito.www.Model.Persona;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import cl.cortito.www.Model.PersonaUserDto;
 import cl.cortito.www.Model.Usuario;
 
 
