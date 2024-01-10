@@ -18,7 +18,7 @@ public class ShortUrl {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column 
-    private String shortUrl;
+    private String longUrl;
     @ManyToOne
     
     @JoinColumn(name = "persona_id")
