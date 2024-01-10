@@ -1,4 +1,7 @@
 package cl.cortito.www.Controller;
+
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import cl.cortito.www.Model.Usuario;
 
-
-
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -20,7 +21,8 @@ public class UsuarioController {
     UsuarioService usuarioService;
     @Autowired
     PersonaService personaService;
-    //  crear usuario con persona
+
+    // crear usuario con persona
     @PostMapping
     public ResponseEntity<?> crearUsuario(@RequestBody Usuario usuario) {
         if (usuario.getPersona() != null) {
@@ -32,15 +34,26 @@ public class UsuarioController {
             } catch (Exception e) {
                 return ResponseEntity.badRequest().body(e.getMessage());
             }
-                
-        }else{
+
+        } else {
             // no se puede crear usuario sin persona
             return ResponseEntity.badRequest().body("No se puede crear usuario sin persona");
         }
-        
+
     }
 
-    //  crear usuario con persona
+    // Login usuario
+    @PostMapping("/login")
+    public ResponseEntity <?> login(@RequestBody String correo, @RequestBody String password) {
+        try {
+             Persona usuarioLogueado = usuarioService.login(correo,password);
+            return ResponseEntity.ok().body(usuarioLogueado);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    // crear usuario con persona
     @PostMapping("/saludar")
     public ResponseEntity<?> saludar() {
         return ResponseEntity.ok().body("hola");

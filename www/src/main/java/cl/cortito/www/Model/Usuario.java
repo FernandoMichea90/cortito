@@ -16,6 +16,7 @@ public class Usuario {
     private Long id;
     private String usuario;
     private String contrasena;
+    private String correo;
     @OneToOne
     @JoinColumn(name = "persona_id")
     private Persona persona;
