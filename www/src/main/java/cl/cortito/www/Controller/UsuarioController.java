@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.cortito.www.Service.UsuarioService;
 import cl.cortito.www.Service.PersonaService;
 import org.springframework.http.ResponseEntity;
+
+import cl.cortito.www.DTO.LoginRequest;
 import cl.cortito.www.Model.Persona;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,9 +46,9 @@ public class UsuarioController {
 
     // Login usuario
     @PostMapping("/login")
-    public ResponseEntity <?> login(@RequestBody String correo, @RequestBody String password) {
+    public ResponseEntity <?> login(@RequestBody LoginRequest loginRequest) {
         try {
-             Persona usuarioLogueado = usuarioService.login(correo,password);
+             Persona usuarioLogueado = usuarioService.login(loginRequest.getCorreo(),loginRequest.getPassword());
             return ResponseEntity.ok().body(usuarioLogueado);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

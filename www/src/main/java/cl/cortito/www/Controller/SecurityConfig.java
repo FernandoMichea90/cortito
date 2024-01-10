@@ -15,7 +15,8 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             // Configura las solicitudes para permitir todas las solicitudes sin autenticación.
             .authorizeHttpRequests((authorize) -> authorize
-                .anyRequest().permitAll())    
+                .requestMatchers("/usuario/login").permitAll()
+                .anyRequest().authenticated())    
             // Aplica la autenticación HTTP básica con la configuración predeterminada.
             .httpBasic(withDefaults());
         // Construye y devuelve la cadena de filtros de seguridad configurada.
