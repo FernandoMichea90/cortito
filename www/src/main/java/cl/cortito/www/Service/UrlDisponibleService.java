@@ -14,5 +14,13 @@ public class UrlDisponibleService {
     public List<UrlDisponible> getAllUrlDisponible(){
         return urlDisponibleRepository.findAll();
     }
+    // Get first url disponible 
+    public UrlDisponible getFirstUrlDisponible(){
+        return urlDisponibleRepository.findFirstByDisponibleTrue();
+    }
+    // create new url disponible
+    public UrlDisponible save(UrlDisponible urlDisponible){
+        return urlDisponibleRepository.save(urlDisponible);
+    }
     
 }
