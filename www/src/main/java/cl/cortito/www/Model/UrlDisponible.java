@@ -19,5 +19,8 @@ public class UrlDisponible {
     @Column(name = "short_url")
     private String urlDisponible;
 
+    @Column(name = "disponible")
+    private Boolean disponible = true;
+
     
 }
